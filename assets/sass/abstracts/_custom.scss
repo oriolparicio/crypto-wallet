@@ -13,9 +13,6 @@
 body {
   background-color: map-get($theme-colors, 'bgColor');
   margin: 0;
-  font-size: 24px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
 //  CARDS DECK
@@ -61,6 +58,10 @@ $cards-per-line: (
 }
 .offset-right {
   margin-right: $offsetComponent;
+}
+
+.noPadding {
+  padding: 0;
 }
 
 // Select

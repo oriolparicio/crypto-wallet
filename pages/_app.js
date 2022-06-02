@@ -1,12 +1,8 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-// Bootstrap CSS
-import 'bootstrap/dist/css/bootstrap.css';
 // Global Styles
 import '../_global.scss';
-// Bootstrap Icons
-import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default function WalletApp({ Component, pageProps }) {
   const router = useRouter();
