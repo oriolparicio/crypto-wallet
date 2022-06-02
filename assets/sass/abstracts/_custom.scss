@@ -1,0 +1,72 @@
+/*******************************
+*
+* Customize your CSS here
+*
+********************************/
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body {
+  background-color: map-get($theme-colors, 'bgColor');
+  margin: 0;
+  font-size: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+//  CARDS DECK
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+) !default;
+
+$grid-gutter-width: 30px;
+
+$cards-per-line: (
+  xs: 1,
+  sm: 1,
+  md: 2,
+  lg: 2,
+  xl: 2,
+);
+
+@each $name, $breakpoint in $grid-breakpoints {
+  @media (min-width: $breakpoint) {
+    .card-deck .cardStyle {
+      flex: 0 0
+        calc(
+          math.div(100, map-get($cards-per-line, $name)) % - #{$grid-gutter-width}
+        );
+    }
+  }
+}
+
+// OFFSETS / MARGINS
+
+.offset-top {
+  margin-top: $offsetComponent;
+}
+.offset-bottom {
+  margin-bottom: $offsetComponent;
+}
+.offset-left {
+  margin-left: $offsetComponent;
+}
+.offset-right {
+  margin-right: $offsetComponent;
+}
+
+// Select
+.noSelect {
+  &,
+  &:hover {
+    cursor: default;
+  }
+}
