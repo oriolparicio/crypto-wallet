@@ -26,6 +26,24 @@ export const getTransactions = createAsyncThunk(
     }
   }
 );
+export const postTransactions = createAsyncThunk(
+  'transactions/post',
+  async (body, thunkAPI) => {
+    try {
+      const data = await TransactionsServices.post(body);
+      return { entity: data };
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      thunkAPI.dispatch(setMessage(message));
+      return thunkAPI.rejectWithValue();
+    }
+  }
+);
 
 export const transactionsSlice = createSlice({
   name: 'transactions',
@@ -38,6 +56,15 @@ export const transactionsSlice = createSlice({
       state.list = payload.list;
     },
     [getTransactions.rejected](state, { error }) {
+      state.status = HTTP_STATUS.REJECTED;
+      state.list = null;
+    },
+    // Post
+    [postTransactions.fulfilled](state, { payload }) {
+      state.status = HTTP_STATUS.FULFILLED;
+      state.list = payload.list;
+    },
+    [postTransactions.rejected](state, { error }) {
       state.status = HTTP_STATUS.REJECTED;
       state.list = null;
     },
