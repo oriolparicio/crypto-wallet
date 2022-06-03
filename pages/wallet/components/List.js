@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 
 const List = () => {
   const { list } = useSelector((state) => state.transaction);
-  let getList = list.data?.map((transaction, i) => {
+  let getList = list?.data?.map((transaction, i) => {
     return (
       <ListGroup.Item key={i} className={listStyles.transactionItem}>
         <div className={listStyles.itemDiv}>

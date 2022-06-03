@@ -22,9 +22,14 @@ const Wallet = () => {
       </Head>
       <Graphics />
       <Buttons />
-      <Placeholder xs={12} />
-      {isStatusFulfilled(status) ? <Placeholder xs={12} /> : <List />}
-      <List />
+      {isStatusFulfilled(status) ? (
+        <>
+          <Placeholder xs={12} />
+          <Placeholder xs={12} />
+        </>
+      ) : (
+        <List />
+      )}
     </Row>
   );
 };

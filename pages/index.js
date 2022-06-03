@@ -12,6 +12,7 @@ const Index = () => {
   const router = useRouter();
 
   const { user, isLoggedIn } = useSelector((state) => state.auth);
+  const { list } = useSelector((state) => state.transaction);
 
   useEffect(() => {
     if (!user) {
@@ -30,8 +31,8 @@ const Index = () => {
       });
   };
   useEffect(() => {
-    initFetch(user.data._id);
-  }, []);
+    if (isLoggedIn) initFetch(user?.data?._id);
+  }, [list]);
 
   return user ? <Wallet /> : <></>;
 };

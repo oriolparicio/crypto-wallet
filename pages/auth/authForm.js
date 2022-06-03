@@ -12,7 +12,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 // Style
-import style from './authForm.module.scss';
+import style from '../../components/customModal/customForm.module.scss';
 
 const AuthForm = () => {
   const [loading, setLoading] = useState(false);
