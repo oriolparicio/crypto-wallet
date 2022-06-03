@@ -14,7 +14,7 @@ if (typeof localStorage !== 'undefined') {
 }
 
 const initialState = user
-  ? { status: HTTP_STATUS.IDLE, isLoggedIn: true, user }
+  ? { status: HTTP_STATUS.IDLE, isLoggedIn: true, user: user }
   : { status: HTTP_STATUS.IDLE, isLoggedIn: false, user: null };
 
 export const login = createAsyncThunk(
@@ -49,7 +49,7 @@ export const authSlice = createSlice({
     [login.fulfilled](state, { payload }) {
       state.status = HTTP_STATUS.FULFILLED;
       state.isLoggedIn = true;
-      state.user = action.payload.user;
+      state.user = payload.user;
     },
     [login.rejected](state, { error }) {
       state.status = HTTP_STATUS.REJECTED;

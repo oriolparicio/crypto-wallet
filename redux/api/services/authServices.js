@@ -2,15 +2,16 @@ import { axiosInstance as axios } from '../../network/_axios';
 
 const login = async (username, password) => {
   return await axios
-    .post('/signin', {
+    .post('/auth/signin', {
       username,
       password,
     })
     .then((response) => {
-      if (response.data.accessToken) {
-        localStorage.setItem('user', JSON.stringify(response.data));
+      let data = response.data;
+      if (response.data.token) {
+        localStorage.setItem('user', JSON.stringify(data));
       }
-      return response.data;
+      return data;
     });
 };
 
