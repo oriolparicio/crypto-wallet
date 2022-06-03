@@ -1,11 +1,19 @@
 import Head from 'next/head';
 // Components
-import { Row } from 'react-bootstrap';
+import { Placeholder, Row } from 'react-bootstrap';
 import Graphics from './components/Graphics';
 import Buttons from './components/Buttons';
 import List from './components/List';
 
+// Redux
+import { useSelector } from 'react-redux';
+
+// Utils
+import isStatusFulfilled from '../../utils/isStatusFulfilled';
+
 const Wallet = () => {
+  const { status } = useSelector((state) => state.auth);
+
   return (
     <Row>
       <Head>
@@ -14,6 +22,8 @@ const Wallet = () => {
       </Head>
       <Graphics />
       <Buttons />
+      <Placeholder xs={12} />
+      {isStatusFulfilled(status) ? <Placeholder xs={12} /> : <List />}
       <List />
     </Row>
   );
