@@ -5,7 +5,7 @@ import { store } from '../api/store';
 import { logout } from '../api/slices/authSlice';
 
 // Base URL for Instance
-export const apiUrl = 'http://localhost:4000/api';
+export const apiUrl = 'http://crypto-wallet-tech-test-api.herokuapp.com/api';
 
 export const axiosInstance = axios.create({
   baseURL: apiUrl,
