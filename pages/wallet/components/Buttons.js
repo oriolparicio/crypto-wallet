@@ -2,6 +2,7 @@ import { useState } from 'react';
 // Components
 import Button from '../../../components/button/Button';
 import { ButtonGroup, Col } from 'react-bootstrap';
+import { Upload, Download } from 'react-bootstrap-icons';
 
 // Style
 import styles from '../styles/Wallet.module.scss';
@@ -15,10 +16,14 @@ const Buttons = () => {
     return setModalShow(true);
   };
   return (
-    <Col xs={12} className={`noPadding ${styles.sectionMargin}`}>
+    <Col xs={11} lg={12} className={`noPadding ${styles.sectionMargin}`}>
       <ButtonGroup className={`${btnStyles.btnGroup}`}>
-        <Button onClickEvent={handleModal}>Send</Button>
-        <Button>Receive</Button>
+        <Button classes={'defaultTextPlus'} onClickEvent={handleModal}>
+          <Upload /> Send
+        </Button>
+        <Button classes={'defaultTextPlus'}>
+          <Download /> Receive
+        </Button>
       </ButtonGroup>
       <CustomModal
         show={modalShow}

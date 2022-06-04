@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.boldText {
+  font-weight: bold;
+}
+
+.textColor {
+  color: map-get($theme-colors, 'textColor');
+}
+.textColorOpacity {
+  color: map-get($theme-colors, 'textColorOpacity');
+}
+.textColorLight {
+  color: map-get($theme-colors, 'textColorLight');
+}
+.testColorPrimary {
+  color: map-get($theme-colors, 'primary');
+}
+
+.defaultText {
+  font-size: 1em;
+  @media (max-width: 575px) {
+    font-size: 3vw;
+  }
+}
+.defaultTextPlus {
+  font-size: 1.3em;
+  @media (max-width: 575px) {
+    font-size: 3.3vw;
+  }
+}
+.subTitleText {
+  font-size: 1.5em;
+  @media (max-width: 575px) {
+    font-size: 4vw;
+  }
+}
+.titleText {
+  font-size: 1.8em;
+  @media (max-width: 575px) {
+    font-size: 5vw;
+  }
+}

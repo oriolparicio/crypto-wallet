@@ -30,7 +30,6 @@ axiosInstance.interceptors.response.use(
   },
   function (error) {
     if (error.response.status === 401) {
-      console.log('AAA');
       store.dispatch(logout());
     }
     // Do something with response error

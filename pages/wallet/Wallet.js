@@ -11,11 +11,14 @@ import { useSelector } from 'react-redux';
 // Utils
 import isStatusFulfilled from '../../utils/isStatusFulfilled';
 
+// Styles
+import styles from './styles/Wallet.module.scss';
+
 const Wallet = () => {
   const { status } = useSelector((state) => state.transactions);
 
   return (
-    <Row>
+    <Row className={styles.walletContainer}>
       <Head>
         <title>Degecoin</title>
         <link rel="icon" href="/favicon.ico" />

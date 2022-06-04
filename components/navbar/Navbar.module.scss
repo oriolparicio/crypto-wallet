@@ -1,0 +1,20 @@
+.navbarBrand,
+.navbarIcons {
+  font-size: 1.5em;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+.navbarBrand {
+  color: map-get($theme-colors, 'primary');
+
+  &:hover {
+    color: map-get($theme-colors, 'primaryLight');
+  }
+}
+.navbarIcons {
+  color: map-get($theme-colors, 'textColorOpacity');
+
+  &:hover {
+    color: map-get($theme-colors, 'primary');
+  }
+}

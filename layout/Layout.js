@@ -3,9 +3,12 @@ import Head from 'next/head';
 import { Container } from 'react-bootstrap';
 import Navbar from '../components/navbar/Navbar';
 
+// Styles
+import styles from './Layout.module.scss';
+
 const Layout = ({ children }) => {
   return (
-    <Container>
+    <Container className={styles.layoutContainer} nogutters="true">
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

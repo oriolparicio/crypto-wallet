@@ -1,7 +1,17 @@
-.sectionContainer {
-  background-color: map-get($theme-colors, 'sectionBg');
-}
+.walletContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  .sectionContainer {
+    background-color: map-get($theme-colors, 'sectionBg');
+    .graphTitleWrap {
+      padding: 1em;
+    }
+  }
 
-.sectionMargin {
-  margin: $offsetComponent 0;
+  .sectionMargin {
+    margin: $offsetComponent 0;
+  }
 }

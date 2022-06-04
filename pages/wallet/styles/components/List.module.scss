@@ -1,38 +1,44 @@
 $iconSize: 1.5em;
 
 .transactionItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .itemDiv {
+  border: none;
+  &.item_header {
+    background-color: map-get($theme-colors, 'bgColor');
+  }
+  &.item_body {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    .transactionIcon {
-      position: relative;
-      height: $iconSize * 2;
-      width: $iconSize * 2;
-      //   padding: 0 2em;
-      background-color: map-get($theme-colors, 'primaryLight');
-      border-radius: 50%;
-      i {
-        color: map-get($theme-colors, 'primary');
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: $iconSize;
+    .itemDiv {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .transactionIcon {
+        position: relative;
+        height: $iconSize * 2;
+        width: $iconSize * 2;
+        //   padding: 0 2em;
+        background-color: map-get($theme-colors, 'primaryLight');
+        border-radius: 50%;
+        svg {
+          color: map-get($theme-colors, 'primary');
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: $iconSize;
+        }
+      }
+      .blockText {
+        margin-left: 1em;
       }
     }
     .blockText {
-      margin-left: 1em;
-    }
-  }
-  .blockText {
-    display: flex;
-    flex-direction: column;
-    &.right {
-      text-align: right;
+      display: flex;
+      flex-direction: column;
+      &.right {
+        text-align: right;
+      }
     }
   }
 }
