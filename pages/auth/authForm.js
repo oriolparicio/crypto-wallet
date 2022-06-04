@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 
+// Components
+import Button from '../../components/button/Button';
+
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -13,6 +16,7 @@ import * as Yup from 'yup';
 
 // Style
 import style from '../../components/customModal/customForm.module.scss';
+import btnStyle from '../../components/button/Button.module.scss';
 
 const AuthForm = () => {
   const [loading, setLoading] = useState(false);
@@ -83,16 +87,19 @@ const AuthForm = () => {
               />
             </div>
             <div className="form-group">
-              <button
+              {/* <Button classes={'defaultTextPlus'} onClickEvent={handleModal}>
+                <Upload /> Send
+              </Button> */}
+              <Button
                 type="submit"
-                className="btn btn-primary btn-block"
+                className={`${btnStyle.buttonStyle} ${btnStyle.loginBtn}`}
                 disabled={loading}
               >
                 {loading && (
                   <span className="spinner-border spinner-border-sm"></span>
                 )}
                 <span>Login</span>
-              </button>
+              </Button>
             </div>
           </Form>
         </Formik>

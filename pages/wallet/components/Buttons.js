@@ -18,10 +18,13 @@ const Buttons = () => {
   return (
     <Col xs={11} lg={12} className={`noPadding ${styles.sectionMargin}`}>
       <ButtonGroup className={`${btnStyles.btnGroup}`}>
-        <Button classes={'defaultTextPlus'} onClickEvent={handleModal}>
+        <Button
+          className={`${btnStyles.buttonStyle} defaultTextPlus`}
+          onClick={handleModal}
+        >
           <Upload /> Send
         </Button>
-        <Button classes={'defaultTextPlus'}>
+        <Button className={`${btnStyles.buttonStyle} defaultTextPlus`}>
           <Download /> Receive
         </Button>
       </ButtonGroup>
