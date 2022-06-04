@@ -1,12 +1,17 @@
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
+import { getTransactions } from '../redux/api/slices/transactionSlice';
+import checkAuth from '../redux/api/methods/checkAuth';
+
+// Components
 import Layout from '../layout/Layout';
 import Wallet from './wallet/Wallet';
 
-import { useRouter } from 'next/router';
-import { useDispatch, useSelector } from 'react-redux';
-import { getTransactions } from '../redux/api/slices/transactionSlice';
+// Utils
 import isStatusFulfilled from '../utils/isStatusFulfilled';
-import checkAuth from '../redux/api/methods/checkAuth';
 
 const Index = () => {
   const dispatch = useDispatch();

@@ -13,6 +13,7 @@ import isStatusFulfilled from '../../utils/isStatusFulfilled';
 
 // Styles
 import styles from './styles/Wallet.module.scss';
+import Navbar from '../../components/navbar/Navbar';
 
 const Wallet = () => {
   const { status } = useSelector((state) => state.transactions);
@@ -23,6 +24,7 @@ const Wallet = () => {
         <title>Degecoin</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navbar />
       <Graphics />
       <Buttons />
       {isStatusFulfilled(status) ? (
