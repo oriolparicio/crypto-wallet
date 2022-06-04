@@ -2,6 +2,7 @@ import axios from 'axios';
 
 // Redux
 import { store } from '../api/store';
+
 import { logout } from '../api/slices/authSlice';
 
 // Base URL for Instance
