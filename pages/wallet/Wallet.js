@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 import isStatusFulfilled from '../../utils/isStatusFulfilled';
 
 const Wallet = () => {
-  const { status } = useSelector((state) => state.auth);
+  const { status } = useSelector((state) => state.transactions);
 
   return (
     <Row>
@@ -23,12 +23,12 @@ const Wallet = () => {
       <Graphics />
       <Buttons />
       {isStatusFulfilled(status) ? (
+        <List />
+      ) : (
         <>
           <Placeholder xs={12} />
           <Placeholder xs={12} />
         </>
-      ) : (
-        <List />
       )}
     </Row>
   );

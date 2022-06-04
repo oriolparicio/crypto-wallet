@@ -37,7 +37,16 @@ export const login = createAsyncThunk(
 );
 
 export const logout = createAsyncThunk('auth/logout', async () => {
-  await AuthService.logout();
+  try {
+    return AuthService.logout();
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    thunkAPI.dispatch(setMessage(message));
+    return thunkAPI.rejectWithValue();
+  }
 });
 
 export const authSlice = createSlice({
@@ -55,6 +64,15 @@ export const authSlice = createSlice({
       state.status = HTTP_STATUS.REJECTED;
       state.isLoggedIn = false;
       state.user = null;
+    },
+    // Login
+    [logout.fulfilled](state, { payload }) {
+      state.status = HTTP_STATUS.FULFILLED;
+      state.isLoggedIn = false;
+      state.user = null;
+    },
+    [logout.rejected](state, { error }) {
+      state.status = HTTP_STATUS.REJECTED;
     },
   },
 });

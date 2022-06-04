@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+// Redux
+import { store } from '../api/store';
+import { logout } from '../api/slices/authSlice';
+
 // Base URL for Instance
 export const apiUrl = 'http://localhost:4000/api';
 
@@ -19,12 +23,16 @@ axiosInstance.interceptors.request.use(
 );
 
 // Add a response interceptor
-axios.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   function (response) {
     // Do something with response data
     return response;
   },
   function (error) {
+    if (error.response.status === 401) {
+      console.log('AAA');
+      store.dispatch(logout());
+    }
     // Do something with response error
     return Promise.reject(error);
   }

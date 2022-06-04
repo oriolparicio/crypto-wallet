@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Layout from '../layout/Layout';
 import Wallet from './wallet/Wallet';
 
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTransactions } from '../redux/api/slices/transactionSlice';
+import isStatusFulfilled from '../utils/isStatusFulfilled';
+import checkAuth from '../redux/api/methods/checkAuth';
 
 const Index = () => {
   const dispatch = useDispatch();
@@ -12,10 +14,10 @@ const Index = () => {
   const router = useRouter();
 
   const { user, isLoggedIn } = useSelector((state) => state.auth);
-  const { list } = useSelector((state) => state.transaction);
+  const { status } = useSelector((state) => state.transactions);
 
   useEffect(() => {
-    if (!user) {
+    if (!user && !checkAuth()) {
       router.push({
         pathname: '/login',
         query: false,
@@ -31,10 +33,12 @@ const Index = () => {
       });
   };
   useEffect(() => {
-    if (isLoggedIn) initFetch(user?.data?._id);
-  }, [list]);
+    let userId =
+      user?.data?._id || JSON.parse(localStorage.getItem('user'))?.data?._id;
+    if (isLoggedIn && !isStatusFulfilled(status)) initFetch(userId);
+  }, [status]);
 
-  return user ? <Wallet /> : <></>;
+  return user && isStatusFulfilled(status) ? <Wallet /> : <></>;
 };
 
 Index.getLayout = function getLayout(page) {

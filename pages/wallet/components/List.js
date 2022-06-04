@@ -9,8 +9,11 @@ import listStyles from '../styles/components/List.module.scss';
 import { useSelector } from 'react-redux';
 
 const List = () => {
-  const { list } = useSelector((state) => state.transaction);
-  let getList = list?.data?.map((transaction, i) => {
+  const { list } = useSelector((state) => state.transactions);
+
+  let transactionsList = list?.data || [];
+
+  let getList = transactionsList.map((transaction, i) => {
     return (
       <ListGroup.Item key={i} className={listStyles.transactionItem}>
         <div className={listStyles.itemDiv}>

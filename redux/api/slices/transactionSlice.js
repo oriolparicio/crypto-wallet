@@ -51,22 +51,26 @@ export const transactionsSlice = createSlice({
 
   extraReducers: {
     // Get
+    [getTransactions.pending](state) {
+      state.status = HTTP_STATUS.PENDING;
+    },
     [getTransactions.fulfilled](state, { payload }) {
       state.status = HTTP_STATUS.FULFILLED;
       state.list = payload.list;
     },
     [getTransactions.rejected](state, { error }) {
       state.status = HTTP_STATUS.REJECTED;
-      state.list = null;
+      state.list = [];
     },
     // Post
-    [postTransactions.fulfilled](state, { payload }) {
+    [postTransactions.pending](state) {
+      state.status = HTTP_STATUS.PENDING;
+    },
+    [postTransactions.fulfilled](state) {
       state.status = HTTP_STATUS.FULFILLED;
-      state.list = payload.list;
     },
     [postTransactions.rejected](state, { error }) {
       state.status = HTTP_STATUS.REJECTED;
-      state.list = null;
     },
   },
 });

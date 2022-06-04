@@ -5,7 +5,7 @@ import messageReducer from './slices/messageSlice';
 
 const reducer = {
   auth: authReducer,
-  transaction: transactionReducer,
+  transactions: transactionReducer,
   message: messageReducer,
 };
 export const store = configureStore({
