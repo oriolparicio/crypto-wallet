@@ -22,6 +22,12 @@ In `/src/layout/Layout.tsx` we have the base layout of the project.
 `/src/utils` folder we can find external functions or global constants.
 
 Redux have been builded with Redux Toolkit and the requests have been made with axios.
+We have some 'Actions':
+
+- Login (In the Login form `/login route`)
+- Logout (click left arrow on navbar to test it)
+- GetTransactions (on page load and on post transaction)
+- PostTransaction (click send button to test it)
 
 ## Available Scripts
 
