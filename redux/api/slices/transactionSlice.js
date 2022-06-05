@@ -6,7 +6,11 @@ import { setMessage } from './messageSlice';
 import { HTTP_STATUS } from '../../../utils/constants';
 import TransactionsServices from '../services/transactionsServices';
 
-const initialState = { status: HTTP_STATUS.IDLE, list: [] };
+const initialState = {
+  status: HTTP_STATUS.IDLE,
+  list: [],
+  postStatus: HTTP_STATUS.IDLE,
+};
 
 export const getTransactions = createAsyncThunk(
   'transactions/get',
@@ -64,13 +68,13 @@ export const transactionsSlice = createSlice({
     },
     // Post
     [postTransactions.pending](state) {
-      state.status = HTTP_STATUS.PENDING;
+      state.postStatus = HTTP_STATUS.PENDING;
     },
     [postTransactions.fulfilled](state) {
-      state.status = HTTP_STATUS.FULFILLED;
+      state.postStatus = HTTP_STATUS.FULFILLED;
     },
     [postTransactions.rejected](state, { error }) {
-      state.status = HTTP_STATUS.REJECTED;
+      state.postStatus = HTTP_STATUS.REJECTED;
     },
   },
 });

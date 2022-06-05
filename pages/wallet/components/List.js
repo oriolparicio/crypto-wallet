@@ -14,6 +14,8 @@ import dataFormatter, {
   isToday,
   isYesterday,
 } from '../../../utils/dateFormatter.js';
+import { dateFormats } from '../../../utils/constants';
+
 const List = () => {
   const { list } = useSelector((state) => state.transactions);
 
@@ -26,7 +28,7 @@ const List = () => {
         <ListGroup.Item
           className={`textColorOpacity boldText ${listStyles.transactionItem} ${listStyles.item_header}`}
         >
-          Received at {dataFormatter(date, 'MMMM d, YYYY')}
+          Received at {dataFormatter(date, dateFormats.date)}
           {isToday(date) ? ' - Today' : isYesterday(date) ? ' - Yesterday' : ''}
         </ListGroup.Item>
         <ListGroup.Item
@@ -39,7 +41,7 @@ const List = () => {
             <div className={listStyles.blockText}>
               <span className="defaultText boldText">{transaction?.type}</span>
               <span className="defaultText textColorOpacity">
-                {transaction?.type} at {dataFormatter(date, 'hh:mm A')}
+                {transaction?.type} at {dataFormatter(date, dateFormats.time)}
               </span>
             </div>
           </div>
